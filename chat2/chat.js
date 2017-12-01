@@ -1,23 +1,3 @@
-
-<!doctype html>
-<html>
-  <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-/*      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }*/
-    </style>
-  </head>
-  <body>
-<script src="/socket.io/socket.io.js"></script>
-<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
         var URL = window.location.protocol + "//" + window.location.host;
         console.log("Connecting to " + URL);
         var socket = io.connect(URL);
@@ -59,23 +39,3 @@
                         }
                 });
         });
-
-</script>
-<div style="float:left;width:100px;border-right:1px solid black;height:900px;padding:10px;overflow:scroll-y;">
-        <b>USERS</b>
-        <div id="users"></div>
-</div>
-         <!-- <div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;"> -->
-<div id="conversation"></div>
-
-<div style="background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%;" >
-        <input id="data" style="border: 0; padding: 10px; width: 90%; margin-right: .5%;" />     
-        <input type="button" id="datasend" value="Send" style="width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px;" />         
-        
-<!--         <input id="data"/ style="border: 0; padding: 10px; width: 90%; margin-right: .5%; position: absolute; bottom: 5px; left: 5px ">
-        <input type="button" id="datasend" value="Send" style="width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; position: absolute; bottom: 5px; right: 5px" /> -->
-
-</div>x`
-
-</body>
-</html>

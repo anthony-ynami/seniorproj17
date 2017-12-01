@@ -1,7 +1,7 @@
 var rg
 
 function setup() {
-    noCanvas();
+
     lexicon = new RiLexicon();
   	rg = new RiGrammar();
 
@@ -37,5 +37,5 @@ function processRita() {
         
         output += ' ';
     }
-      createP(output);
+      createP("output");
 }
