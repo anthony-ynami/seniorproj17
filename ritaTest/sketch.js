@@ -5,12 +5,15 @@ var lexicon;
 function setup() {
     noCanvas();
     lexicon = new RiLexicon();
+
+
         
     input = createInput("It was a dark and stormy night.");
     button = createButton('submit');
+    button.mousePressed(processRita);
     input.changed(processRita);
     input.size(200);
-    button.mousePressed(processRita);
+    
 }
 
 function processRita() {
