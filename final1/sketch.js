@@ -1,17 +1,19 @@
 var input;
 var button;
 var lexicon;
-var regex = new RegExp("how are you", "i");
+var regex = new RegExp("how are you", "gi");
 
 function setup() {
-    noCanvas();
-    lexicon = new RiLexicon();
+    // noCanvas();
+    // lexicon = new RiLexicon();
         
-    input = createInput("How are you?");
-    button = createButton('submit');
-    input.changed(processRita);
-    input.size(200);
-    button.mousePressed(processRita);
+    // input = createInput("How are you?");
+    // chatbutt = createButton("Send");
+    // button = createButton("I don't know what to say");
+    // input.changed(processRita);
+    // input.size(200);
+    // chatbutt.mousePressed(processRita);
+    // button.mousePressed(rephrase);
 
     // changeTextSimple('talk', input);
 
@@ -20,14 +22,30 @@ function setup() {
 
 
 function rephrase(){
-    rg = new RiGrammar();
 
-    rg.addrule('<start>', '<template>');
-    rg.addrule('<template>', 'What is the meaning of life?');
 
-    var result = gr.expand();
+    // gr.addrule(<start>: '<template>'
+    // <template>: 'What is the meaning of life?'
+    // }
 
+
+$.getJSON("grammar.txt", function(str){
+    gr = new RiGrammar(str);
+    generate();
+    }); 
 }
+
+
+function generate()
+{
+    result = gr.expand();
+    changeTextSimple('chat', result);
+}
+
+function changeTextSimple(idElement, result){
+    document.getElementById(idElement).innerHTML += result + '</br>';
+}
+
 
 
 
@@ -40,37 +58,24 @@ function processRita() {
     console.log(words);
     console.log(pos);
     
-    var output = '';
+    var result = '';
 
-    output = 
 
 
     for (var i = 0; i < words.length;i++){
         if(/jj.*/.test(pos[i])) {
-            output += lexicon.randomWord('jj')
+            result += lexicon.randomWord('jj')
         } else if (/rb.*/.test(pos[i])) {
-            output += lexicon.randomWord('rb')
+            result += lexicon.randomWord('rb')
         }
         else{
-            output += words[i];
+            result += words[i];
         }
         
-        output += ' ';
+        result += ' ';
     }
 
+        changeTextSimple('chat', result);
 
-
-     createP(output)
-
-     // changeTextSimple('chat',output);
 
 }
-
-// function generate()
-// {
-//     changeTextSimple('definition', result);
-// }
-
-// function changeTextSimple(idElement, result){
-//     document.getElementById(idElement).innerHTML = result;
-// }
