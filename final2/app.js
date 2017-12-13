@@ -1,8 +1,7 @@
 //Load angular
 var app = angular.module('scotch-chat', ['ngMaterial', 'ngAnimate', 'ngMdIcons', 'btford.socket-io']);
 
-//Set our server url
-var serverBaseUrl = 'http://localhost:2015';
+//Set our server url var serverBaseUrl = 'http://localhost:2017';
 
 //Services to interact with nodewebkit GUI and Window
 app.factory('GUI', function() {
@@ -43,6 +42,14 @@ app.directive('ngEnter', function() {
 app.controller('MainCtrl', function($scope, Window, GUI, $mdDialog, socket, $http) {
 
     //Menu setup
+
+    //Modal setup
+
+    //listen for new message
+
+    //Notify server of the new message
+
+});
     //Global Scope
     $scope.messages = [];
     $scope.room = "";
@@ -64,7 +71,7 @@ app.controller('MainCtrl', function($scope, Window, GUI, $mdDialog, socket, $htt
             Window.close()
         }
     }));
-    //Listen for the setup event and create rooms
+        //Listen for the setup event and create rooms
 socket.on('setup', function (data) {        
     var rooms = data.rooms;
 
@@ -97,9 +104,8 @@ socket.on('setup', function (data) {
     //Attach menu
     GUI.Window.get().menu = windowMenu;
 });
-
-    //Modal setup
-    $scope.usernameModal = function (ev) {
+        
+            $scope.usernameModal = function (ev) {
     //Launch Modal to get username
     $mdDialog.show({
         controller: UsernameDialogController,
@@ -125,16 +131,9 @@ socket.on('setup', function (data) {
     });
 };
 
-
-    //listen for new message
-
-    //Notify server of the new message
     //Dialog controller
 function UsernameDialogController($scope, $mdDialog) {
     $scope.answer = function (answer) {
         $mdDialog.hide(answer);
     };
 }
-
-});
-        

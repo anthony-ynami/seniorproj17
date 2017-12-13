@@ -4,11 +4,11 @@ var lexicon;
 var regex = new RegExp("how are you", "gi");
 
 function setup() {
-    // noCanvas();
-    // lexicon = new RiLexicon();
-        
-    // input = createInput("How are you?");
-    // chatbutt = createButton("Send");
+   noCanvas();
+    lexicon = new RiLexicon();
+  
+    //  input = createInput("How are you?");
+    //  chatbutt = createButton("Send");
     // button = createButton("I don't know what to say");
     // input.changed(processRita);
     // input.size(200);
@@ -17,7 +17,7 @@ function setup() {
 
     // changeTextSimple('talk', input);
 
-    // changeTextSimple('press', button);
+    //  changeTextSimple('press', button);
 }
 
 
@@ -51,7 +51,7 @@ function changeTextSimple(idElement, result){
 
 
 function processRita() {
-    var s = input.value();
+    var s = document.getElementById("data").value;
     var rs = new RiString(s);
     var words = rs.words();
     var pos = rs.pos();
@@ -60,22 +60,40 @@ function processRita() {
     
     var result = '';
 
-
-
-    for (var i = 0; i < words.length;i++){
+    if(RiTa.isQuestion(s)){
+        result += words[0]+" ";
+        for (var i = 1; i < words.length;i++){
         if(/jj.*/.test(pos[i])) {
-            result += lexicon.randomWord('jj')
+            result += lexicon.randomWord('jj');
         } else if (/rb.*/.test(pos[i])) {
-            result += lexicon.randomWord('rb')
+            result += lexicon.randomWord('rb');
+
         }
+    
         else{
             result += words[i];
         }
         
         result += ' ';
+
+
+        };
     }
 
+    else {
+        for (var i = 0; i < words.length;i++){
+        if(/jj.*/.test(pos[i])) {
+            result += lexicon.randomWord('jj');
+        } else if (/rb.*/.test(pos[i])) {
+            result += lexicon.randomWord('rb');
+        }
+        else{
+            result += words[i];
+        };
+        
+        result += ' ';
+}
+}
         changeTextSimple('chat', result);
-
 
 }
