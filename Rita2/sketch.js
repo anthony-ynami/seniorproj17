@@ -1,4 +1,5 @@
-var rg
+var rg;
+var button;
 
 function setup() {
 
@@ -9,9 +10,10 @@ function setup() {
 
   	
 
- 	rg.addrule('<start>','the <N> meows',1);
+ 	rg.addrule('<start>','the <N> <V>',1);
  	rg.addrule('<N>','cat | unicorn',5);
  	rg.addrule('<N>','dog');\
+ 	rg.addrule('<V>','meows | barks | twillips')
  	for (var i =0; i < 100; i++) {
  		var result = rg.expand();
  		console.log(result);
